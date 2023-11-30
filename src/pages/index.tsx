@@ -46,51 +46,25 @@ export default function Home() {
             <div key={post.id} className="p-8 border-b border-slate-400">{post.content}</div>
             ))}
           </div>
-
-          <section className="section orange flex flex-col">
-        <Scrollytelling.Root
-          scrub={false}
-          callbacks={{
-            onEnterBack: (st) => {
-              st.animation.seek(0).play();
-            },
-          }}
-        >
-          <div
-            className="wrapper"
-            style={{
-              height: '100vh',
-            }}
-          >
-            <Scrollytelling.Animation
-              tween={{ start: 0, end: 1, to: { rotate: 360 } }}
-            >
-              <h1>This element will spin.</h1>
-            </Scrollytelling.Animation>
-          </div>
-        </Scrollytelling.Root>
-      </section>
-
-      <section className="section flex flex-col">
-        <Scrollytelling.Root scrub={false}>
-          <div
-            className="wrapper"
-            style={{
-              height: '100vh',
-            }}
-          >
-            <Scrollytelling.Animation
-              tween={{
-                start: 0,
-                end: 1,
-                to: { scale: 1.5, yoyo: true, repeat: -1 },
-              }}
-            >
-              <h1>Yoyo Text</h1>
-            </Scrollytelling.Animation>
-          </div>
-        </Scrollytelling.Root>
-      </section>
+        </div>
+        <div>
+          <Scrollytelling.Root>
+            <div className="container">
+              <Scrollytelling.Animation
+                tween={{start: 0, end: 30, from: { opacity: 0, scale: 0.9} }}
+              >
+                <h1 className="title">Hello Sasha</h1>
+              </Scrollytelling.Animation>
+              <Scrollytelling.Animation
+                tween={[
+                  { start: 30, end: 80, to: { rotate: 360 }},
+                  { start: 80, end: 100, to: { y: 100 }},
+                ]}
+              >
+                <div className="box" />  
+              </Scrollytelling.Animation>
+            </div>
+          </Scrollytelling.Root>
         </div>
       </main>
     </>
