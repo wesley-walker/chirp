@@ -12,7 +12,12 @@ const CreatePostWizard = () => {
 
   return (
   <div className="flex">
-    <img src={user.imageUrl} alt="Profile Image"/>
+    <img 
+      src={user.imageUrl} 
+      alt="Profile Image" 
+      className="w-48 h-48 rounded-full"
+    />
+    <input placeholder="Type some emojis!" className="bg-transparent"/>
   </div>
   )
 }
@@ -33,13 +38,13 @@ export default function Home() {
       <main className="flex justify-center h-screen">
         <div className="h-full w-full border-b border-slate-400 md:max-w-2xl border-x">
           
-          <div className="border-b borer-slate-400 p-4 flex">
+          <div className="border-b border-slate-400 p-4 flex">
             {!user.isSignedIn && (
             <div className="flex">
               <SignInButton />
             </div>
             )}
-            {!!user.isSignedIn && <SignOutButton />}
+            {user.isSignedIn && <CreatePostWizard />}
           </div>
           <div className="flex flex-col">
             {data?.map((post) => (
@@ -47,25 +52,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div>
-          <Scrollytelling.Root>
-            <div className="container">
-              <Scrollytelling.Animation
-                tween={{start: 0, end: 30, from: { opacity: 0, scale: 0.9} }}
-              >
-                <h1 className="title">Hello Sasha</h1>
-              </Scrollytelling.Animation>
-              <Scrollytelling.Animation
-                tween={[
-                  { start: 30, end: 80, to: { rotate: 360 }},
-                  { start: 80, end: 100, to: { y: 100 }},
-                ]}
-              >
-                <div className="box" />  
-              </Scrollytelling.Animation>
-            </div>
-          </Scrollytelling.Root>
-        </div>
+
       </main>
     </>
   );
